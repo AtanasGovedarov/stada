@@ -1,12 +1,15 @@
-import { Container } from "@mui/material";
+import { Box } from "@mui/material";
 import { MainCTA } from "../../components/MainCTA/MainCTA";
 
 const HomePage = () => {
   return (
-    <Container>
-      {/* <SearchBox></SearchBox> */}
+    <Box
+      sx={{
+        padding: '0 24px'
+      }}
+    >
       <MainCTA />
-    </Container>
+    </Box>
   );
 };
 

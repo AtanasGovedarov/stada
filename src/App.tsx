@@ -11,7 +11,7 @@ export default function App() {
   return (
     <ThemeProvider>
       <CssBaseline>
-      {element}
+        {element}
       </CssBaseline>
     </ThemeProvider>
   );
