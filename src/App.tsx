@@ -1,15 +1,18 @@
-import { ThemeProvider, createTheme } from '@mui/material';
+import ThemeProvider from './theme/ThemeProvider';
 import MainRoutes from './routes/main.routes';
 import { useRoutes } from "react-router-dom";
-import { stada } from './themes/stada';
+import { CssBaseline } from '@mui/material';
+
+import './App.css';
 
 export default function App() {
   const element = useRoutes(MainRoutes);
-  const stadaTheme = createTheme(stada); 
 
   return (
-    <ThemeProvider theme={stadaTheme}>
+    <ThemeProvider>
+      <CssBaseline>
       {element}
+      </CssBaseline>
     </ThemeProvider>
   );
 }
