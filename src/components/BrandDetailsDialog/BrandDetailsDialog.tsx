@@ -13,8 +13,7 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Typography,
-  useTheme
+  Typography
 } from "@mui/material";
 
 import { BrandDetailsData } from "../../types/brand/brands.types";
@@ -43,8 +42,6 @@ export const BrandDetailsDialog:FC<BrandDetailsDialogProps> = ({
   name,
   onClose,
 }) => {
-  const theme = useTheme();
-
   const handleClose = () => {
     onClose();
   };

@@ -1,9 +1,10 @@
-import { Button, styled, useTheme } from "@mui/material";
+import { Button, styled } from "@mui/material";
 import { FC } from "react";
 
 type PrimaryButtonProps = {
   label: string,
   onClick: () => void,
+  sx?: any, 
 };
 
 const StyledButton = styled(Button)(({theme}) => `
@@ -21,12 +22,12 @@ const StyledButton = styled(Button)(({theme}) => `
 export const PrimaryButton:FC<PrimaryButtonProps> = ({
   onClick,
   label,
+  sx,
 }) => {
-  const theme = useTheme();
-
   return (
     <StyledButton
       onClick={() => onClick()}
+      sx={{...sx}}
     >
       {label}
     </StyledButton>

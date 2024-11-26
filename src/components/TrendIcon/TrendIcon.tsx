@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Box } from "@mui/material";
-import { Check, Close } from "@mui/icons-material";
+import { Close } from "@mui/icons-material";
 
 type TrendIconProps = {
   trend: boolean;

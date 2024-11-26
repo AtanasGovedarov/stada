@@ -1,8 +1,8 @@
-import { Box, Container } from "@mui/material";
+import { Box } from "@mui/material";
 import { PageTitle } from "../../components/PageTitle/PageTitle";
 import { SearchBox } from "../../components/SearchBox/SearchBox";
 import { BrandData } from "../../types/brand/brands.types";
-import { BrandsList } from "../../components/BrandsList/BrandsList";
+import { BrandsList } from "../../components/Lists/BrandsList";
 
 const DATA:BrandData[] = [
   {

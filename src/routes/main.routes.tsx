@@ -29,7 +29,7 @@ const MainRoutes: RouteObject[] = [
     ],
   },
   {
-    path: "/pharmacy:pharmacyid",
+    path: "/pharmacy/:pharmacyid",
     element: <Layout />,
     children: [
       { index: true, element: <PharmacyPage /> },

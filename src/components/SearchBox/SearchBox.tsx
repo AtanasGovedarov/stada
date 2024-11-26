@@ -1,3 +1,5 @@
+import { FC } from "react";
+
 import {
   Box,
   InputAdornment,
@@ -5,8 +7,17 @@ import {
 } from "@mui/material";
 
 import { Search } from "@mui/icons-material";
+import { Filters } from "../Filters/Filters";
 
-export const SearchBox = () => {
+type SearchBoxProps = {
+  filters?: boolean,
+  selected?: string[],
+};
+
+export const SearchBox:FC<SearchBoxProps> = ({
+  filters,
+  selected,
+}) => {
   return (
     <Box
       sx={{
@@ -22,9 +33,13 @@ export const SearchBox = () => {
           </InputAdornment>
         }
         sx={{
-          flexGrow: 1
+          flexGrow: 1,
+          marginRight: !!filters ? '12px' : 0,
         }}
       />
+      {!!filters &&
+        <Filters selected={!!selected ? selected : undefined} />
+      }
     </Box>
   );
 };

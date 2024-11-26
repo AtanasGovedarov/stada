@@ -31,6 +31,7 @@ export const PageTitle:FC<PageTitleProps> = ({
       >
         <ArrowBackIosNew fontSize={'large'} sx={{color: theme.colors.stada.stadaBlue}} />
         <Typography
+          variant={'body2'}
           sx={{
             flexGrow: 1,
             textAlign: 'center',
