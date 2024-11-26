@@ -13,7 +13,10 @@ const themeColors = {
   trueWhite: '#ffffff',
 
   // Stada colors
-  teal: '#005665',
+  stadaBlue: '#005FAE',
+  stadaGreenSuccess: '#2EA040',
+  stadaYellowWarning: '#DD9105',
+  stadaRedError: '#BF1414',
   turc: '#00a7a8',
   lightTurc: '#e5f6f6',
   mag: '#e6007e',
@@ -225,7 +228,10 @@ export const StadaDarkTheme = createTheme({
       dark: darken(themeColors.info, 0.2)
     },
     stada: {
-      teal: themeColors.teal,
+      stadaGreenSuccess: themeColors.stadaGreenSuccess,
+      stadaYellowWarning: themeColors.stadaYellowWarning,
+      stadaRedError: themeColors.stadaRedError,
+      stadaBlue: themeColors.stadaBlue,
       turc: themeColors.turc,
       magenta: themeColors.mag,
       lightTurc: themeColors.lightTurc,
@@ -263,6 +269,12 @@ export const StadaDarkTheme = createTheme({
   },
   spacing: 9,
   palette: {
+    stadaGreenSuccess: {main: themeColors.stadaGreenSuccess},
+    stadaYellowWarning: {main: themeColors.stadaYellowWarning},
+    stadaRedError: {main: themeColors.stadaRedError},
+    stadaBlue: {
+      main: themeColors.stadaBlue,
+    },
     bodyBackground: {
       main: themeColors.bodyBackground,
       light: themeColors.bodyBackground,

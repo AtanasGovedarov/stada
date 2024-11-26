@@ -12,10 +12,13 @@ const themeColors = {
   primaryAlt: '#000C57',
 
   // Stada colors
-  teal: '#005665',
+  stadaBlue: '#005FAE',
+  stadaGreenSuccess: '#2EA040',
+  stadaYellowWarning: '#DD9105',
+  stadaRedError: '#BF1414',
   turc: '#00a7a8',
   lightTurc: '#e5f6f6',
-  mag: '#e6007e',
+  mag: '#E8005A',
   lightMagenta: '#FCE5F2',
   mainDarkGrey: '#333',
   darkText: 'rgba(0,0,0, 0.8)',
@@ -57,7 +60,7 @@ const colors = {
       bodyBg: themeColors.bodyBackground
     },
     sidebar: {
-      background: themeColors.teal,
+      background: themeColors.stadaBlue,
       textColor: themeColors.secondary,
       dividerBg: '#f2f5f9',
       menuItemColor: '#242E6F',
@@ -133,13 +136,16 @@ const colors = {
   },
   stada: {
     main: themeColors.mainDarkGrey,
-    teal: themeColors.teal,
+    stadaBlue: themeColors.stadaBlue,
+    stadaGreenSuccess: themeColors.stadaGreenSuccess,
+    stadaYellowWarning: themeColors.stadaYellowWarning,
+    stadaRedError: themeColors.stadaRedError,
     turc: themeColors.turc,
     magenta: themeColors.mag,
     lightTurc: themeColors.lightTurc,
     lightMagenta: themeColors.lightMagenta,
     darkTitleText: themeColors.darkText,
-    bodyBackground: themeColors.bodyBackground
+    bodyBackground: themeColors.bodyBackground,
   }
 };
 
@@ -234,7 +240,10 @@ export const StadaLightTheme = createTheme({
       dark: darken(themeColors.info, 0.2)
     },
     stada: {
-      teal: themeColors.teal,
+      stadaBlue: themeColors.stadaBlue,
+      stadaGreenSuccess: themeColors.stadaGreenSuccess,
+      stadaYellowWarning: themeColors.stadaYellowWarning,
+      stadaRedError: themeColors.stadaRedError,
       turc: themeColors.turc,
       magenta: themeColors.mag,
       lightTurc: themeColors.lightTurc,
@@ -272,6 +281,21 @@ export const StadaLightTheme = createTheme({
   },
   spacing: 9,
   palette: {
+    stadaBlue: {
+      main: themeColors.stadaBlue,
+      light: themeColors.stadaBlue,
+      dark: themeColors.stadaBlue,
+      contrastText: themeColors.stadaBlue,
+    },
+    stadaGreenSuccess: {
+      main: themeColors.stadaGreenSuccess
+    },
+    stadaYellowWarning: {
+      main: themeColors.stadaYellowWarning
+    },
+    stadaRedError: {
+      main: themeColors.stadaRedError
+    },
     bodyBackground: {
       main: themeColors.bodyBackground,
       light: themeColors.bodyBackground,
@@ -612,11 +636,11 @@ export const StadaLightTheme = createTheme({
         },
         outlinedSecondary: {
           backgroundColor: colors.alpha.white[100],
-          color: themeColors.teal,
-          border: '1px solid ' + themeColors.teal,
+          color: themeColors.turc,
+          border: '1px solid ' + themeColors.turc,
 
           '&:hover, &.MuiSelected': {
-            backgroundColor: themeColors.teal,
+            backgroundColor: themeColors.turc,
             color: colors.alpha.white[100],
             border: '1px solid ' + colors.alpha.white[100]
           }
@@ -1188,7 +1212,7 @@ export const StadaLightTheme = createTheme({
     body1: {
       fontSize: 16,
       fontFamily: [
-        'Inter18Bold',
+        'Inter18Regular',
         /* 'Work Sans', */
         '-apple-system',
         'BlinkMacSystemFont',
@@ -1202,7 +1226,8 @@ export const StadaLightTheme = createTheme({
       ].join(',')
     },
     body2: {
-      fontSize: 16
+      fontSize: 16,
+      fontFamily: 'Inter18Bold'
     },
     button: {
       fontFamily: 'Inter18Bold'

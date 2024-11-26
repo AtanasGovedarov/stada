@@ -99,7 +99,10 @@ declare module '@mui/material/styles' {
         dark: string;
       };
       stada: {
-        teal: string;
+        stadaBlue: string;
+        stadaGreenSuccess: string,
+        stadaYellowWarning: string,
+        stadaRedError: string,
         turc: string;
         magenta: string;
         lightTurc: string;
@@ -227,7 +230,10 @@ declare module '@mui/material/styles' {
         dark: string;
       };
       stada: {
-        teal: string;
+        stadaBlue: string;
+        stadaGreenSuccess: string,
+        stadaYellowWarning: string,
+        stadaRedError: string,
         turc: string;
         magenta: string;
         lightTurc: string;
@@ -268,16 +274,27 @@ declare module '@mui/material/styles' {
 
   interface Palette {
     bodyBackground: Palette['primary'],
+    stadaBlue: Palette['primary'],
+    stadaGreenSuccess: Palette['primary'],
+    stadaYellowWarning: Palette['primary'],
+    stadaRedError: Palette['primary'],
   }
 
   interface PaletteOptions {
     bodyBackground: PaletteOptions['primary'],
+    stadaBlue: PaletteOptions['primary'],
+    stadaGreenSuccess: PaletteOptions['primary'],
+    stadaYellowWarning: PaletteOptions['primary'],
+    stadaRedError: PaletteOptions['primary'],
   }
 }
 
 declare module '@mui/material/SvgIcon' {
   interface SvgIconPropsColorOverrides {
     bodyBackground: true;
+    stadaGreenSuccess: true,
+        stadaYellowWarning: true,
+        stadaRedError: true,
   }
 }
 

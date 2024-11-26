@@ -4,6 +4,7 @@ import { MainLayout, Layout } from "../layouts/Layout";
 import HomePage from "./../pages/home/homepage";
 import BrandsPage from "./../pages/brands/brandspage";
 import PharmaciesPage from "./../pages/pharmacies/pharmaciespage";
+import PharmacyPage from "../pages/pharmacy/pharmacypage";
 
 const MainRoutes: RouteObject[] = [
   {
@@ -25,6 +26,13 @@ const MainRoutes: RouteObject[] = [
     element: <Layout />,
     children: [
       { index: true, element: <PharmaciesPage /> },
+    ],
+  },
+  {
+    path: "/pharmacy:pharmacyid",
+    element: <Layout />,
+    children: [
+      { index: true, element: <PharmacyPage /> },
     ],
   },
 ];
