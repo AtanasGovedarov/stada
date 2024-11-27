@@ -394,7 +394,7 @@ export const StadaLightTheme = createTheme({
           textTransform: 'none',
           marginLeft: 8,
           marginRight: 8,
-          fontFamily: 'Inter18Bold'
+          fontFamily: 'Inter18Bold, Inter'
         }
       }
     },
@@ -482,7 +482,7 @@ export const StadaLightTheme = createTheme({
     MuiListSubheader: {
       styleOverrides: {
         colorPrimary: {
-          fontFamily: 'Inter18Bold',
+          fontFamily: 'Inter18Bold, Inter',
           lineHeight: '40px',
           fontSize: 13,
           background: colors.alpha.black[5],
@@ -545,7 +545,7 @@ export const StadaLightTheme = createTheme({
       styleOverrides: {
         root: {
           fontSize: 14,
-          fontFamily: 'Inter18Bold'
+          fontFamily: 'Inter18Bold, Inter'
         },
         colorDefault: {
           background: colors.alpha.black[30],
@@ -562,7 +562,7 @@ export const StadaLightTheme = createTheme({
           background: colors.alpha.black[10],
           fontSize: 13,
           color: colors.alpha.black[70],
-          fontFamily: 'Inter18Bold',
+          fontFamily: 'Inter18Bold, Inter',
 
           '&:first-of-type': {
             border: 0,
@@ -582,7 +582,7 @@ export const StadaLightTheme = createTheme({
       styleOverrides: {
         page: {
           fontSize: 13,
-          fontFamily: 'Inter18Bold',
+          fontFamily: 'Inter18Bold, Inter',
           transition: 'all .2s'
         },
         textPrimary: {
@@ -604,7 +604,7 @@ export const StadaLightTheme = createTheme({
       },
       styleOverrides: {
         root: {
-          fontFamily: 'Inter18Bold',
+          fontFamily: 'Inter18Bold, Inter',
           textTransform: 'none',
           paddingLeft: 16,
           paddingRight: 16,
@@ -752,7 +752,7 @@ export const StadaLightTheme = createTheme({
         },
         wrapper: {
           background: colors.alpha.white[100],
-          fontFamily: 'Inter18Bold',
+          fontFamily: 'Inter18Bold, Inter',
           height: 24,
           lineHeight: '24px',
           marginTop: -12,
@@ -1165,6 +1165,7 @@ export const StadaLightTheme = createTheme({
   typography: {
     fontFamily: [
       'Inter18Regular',
+      'Inter',
       /* 'Work Sans', */
       '-apple-system',
       'BlinkMacSystemFont',
@@ -1178,30 +1179,30 @@ export const StadaLightTheme = createTheme({
       '"Segoe UI Symbol"'
     ].join(','),
     h1: {
-      fontFamily: 'Inter18Bold',
+      fontFamily: 'Inter18Bold, Inter',
       fontSize: 25,
       letterSpacing: '0.01em',
       color: themeColors.turc
     },
     h2: {
-      fontFamily: 'Inter18Bold',
+      fontFamily: 'Inter18Bold, Inter',
       fontSize: 30,
       letterSpacing: '0.01em',
       color: themeColors.turc
     },
     h3: {
-      fontFamily: 'Inter18Bold',
+      fontFamily: 'Inter18Bold, Inter',
       fontSize: 25,
       lineHeight: 1.4,
       color: themeColors.turc
     },
     h4: {
-      fontFamily: 'Inter18Bold',
+      fontFamily: 'Inter18Bold, Inter',
       fontSize: 16,
       color: themeColors.turc
     },
     h5: {
-      fontFamily: 'Inter18Bold',
+      fontFamily: 'Inter18Bold, Inter',
       fontSize: 14,
       color: themeColors.turc,
     },
@@ -1213,6 +1214,7 @@ export const StadaLightTheme = createTheme({
       fontSize: 16,
       fontFamily: [
         'Inter18Regular',
+        'Inter',
         /* 'Work Sans', */
         '-apple-system',
         'BlinkMacSystemFont',
@@ -1227,10 +1229,10 @@ export const StadaLightTheme = createTheme({
     },
     body2: {
       fontSize: 16,
-      fontFamily: 'Inter18Bold'
+      fontFamily: 'Inter18Bold, Inter'
     },
     button: {
-      fontFamily: 'Inter18Bold'
+      fontFamily: 'Inter18Bold, Inter'
     },
     caption: {
       fontSize: 14,
@@ -1261,7 +1263,7 @@ export const StadaLightTheme = createTheme({
     },
     overline: {
       fontSize: 13,
-      fontFamily: 'Inter18Bold',
+      fontFamily: 'Inter18Bold, Inter',
       textTransform: 'uppercase'
     }
   },

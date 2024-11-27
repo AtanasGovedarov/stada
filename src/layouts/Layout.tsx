@@ -50,7 +50,7 @@ export const MainLayout = () => {
         }}
       >
         <Link to={'/'} title="Stada">
-          <img src={logo} />
+          <img src={logo} alt={'Stada'} />
         </Link>
 
         <StadAiButton
@@ -64,7 +64,7 @@ export const MainLayout = () => {
           onOpen={handleAiOpen}
           onClose={handleAiClose}
         />
-  
+
         <MainNavigation />
       </Box>
       <SearchBox />
