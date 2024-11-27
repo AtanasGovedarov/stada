@@ -38,6 +38,7 @@ const PharmacyPage = () => {
   return (
     <Box>
       <PageTitle
+        pharmacy
         label={!!pharmacyData ? pharmacyData.name : 'Аптека'}
         to={'/pharmacies'}
       />

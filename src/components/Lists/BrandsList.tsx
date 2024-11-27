@@ -19,7 +19,7 @@ import { BrandData } from "../../types/brand/brands.types";
 import { ExpandMore } from "@mui/icons-material";
 import { MarketShareAvatar } from "../MarketShareAvatar/MarketShareAvatar";
 import { TrendIcon } from "../TrendIcon/TrendIcon";
-import { BrandDetailsDialog } from "../BrandDetailsDialog/BrandDetailsDialog";
+import { BrandDetailsDialog } from "../Dialogs/BrandDetailsDialog";
 import { PrimaryButton } from "../Buttons/PrimaryButton";
 
 type BrandsListProps = {

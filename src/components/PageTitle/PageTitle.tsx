@@ -7,11 +7,13 @@ import { Link } from "react-router-dom";
 type PageTitleProps = {
   label: string;
   to: string;
+  pharmacy?: boolean;
 }
 
 export const PageTitle:FC<PageTitleProps> = ({
   label,
   to,
+  pharmacy,
 }) => {
   const theme = useTheme();
 
@@ -25,16 +27,21 @@ export const PageTitle:FC<PageTitleProps> = ({
         to={to}
         style={{
           textDecoration: 'none',
-          display: 'flex',
+          display: !!pharmacy ? 'block' : 'flex',
           alignItems: 'center'
         }}
       >
-        <ArrowBackIosNew fontSize={'large'} sx={{color: theme.colors.stada.stadaBlue}} />
+        <ArrowBackIosNew
+          fontSize={'large'}
+          sx={{
+            color: theme.colors.stada.stadaBlue,
+          }}
+        />
         <Typography
           variant={'body2'}
           sx={{
             flexGrow: 1,
-            textAlign: 'center',
+            textAlign: !!pharmacy ? 'left' : 'center',
             fontSize: '24px',
             color: theme.colors.stada.stadaBlue
           }}
