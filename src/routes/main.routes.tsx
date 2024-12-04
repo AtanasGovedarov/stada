@@ -5,10 +5,18 @@ import HomePage from "./../pages/home/homepage";
 import BrandsPage from "./../pages/brands/brandspage";
 import PharmaciesPage from "./../pages/pharmacies/pharmaciespage";
 import PharmacyPage from "../pages/pharmacy/pharmacypage";
+import LoginPage from "../pages/login/loginpage";
 
 const MainRoutes: RouteObject[] = [
   {
     path: "/",
+    element: <Layout />,
+    children: [
+      { index: true, element: <LoginPage /> },
+    ],
+  },
+  {
+    path: "/home",
     element: <MainLayout />,
     children: [
       { index: true, element: <HomePage /> },

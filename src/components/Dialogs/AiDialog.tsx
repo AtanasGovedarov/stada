@@ -1,13 +1,54 @@
 import { FC } from "react";
 
-import { Box, FormGroup, InputAdornment, OutlinedInput, SwipeableDrawer, Typography } from "@mui/material";
+import {
+  Box,
+  Chip,
+  CircularProgress,
+  FormGroup,
+  InputAdornment,
+  OutlinedInput,
+  styled,
+  SwipeableDrawer,
+  Typography
+} from "@mui/material";
 import { PrimaryButton } from "../Buttons/PrimaryButton";
+import { ChatMessage } from "../../types/ai/ai.types";
 
 type AiDialogProps = {
   open: boolean,
   onOpen: () => void,
   onClose: () => void,
 };
+
+const Message = styled(Chip)(({theme}) => `
+  background-color: #343C6A;
+  height: auto;
+  color: white;
+  padding: 4px;
+  float: right;
+  margin: 12px 0;
+
+  & .MuiChip-label: {
+    display: block;
+    white-space: normal;
+  },
+  
+  &.response {
+    float: left;
+    background-color: ${theme.colors.alpha.black[70]}
+  }
+`);
+
+const MESSAGES:ChatMessage[] = [
+  {
+    author: 'Client',
+    content: 'This is question to Ai from the client'
+  },
+  {
+    author: 'Ai',
+    content: 'This is Ai response message'
+  },
+];
 
 export const AiDialog:FC<AiDialogProps> = ({
   open,
@@ -57,6 +98,55 @@ export const AiDialog:FC<AiDialogProps> = ({
             justifyContent: 'flex-end',
           }}
         >
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'flex-end',
+            }}
+          >
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'flex-end',
+              }}
+            >
+              <Box>
+              {MESSAGES.map((message, i) => {
+                return (
+                  <Message
+                    className={message.author === 'Ai' ? 'response': ''}
+                    key={message.content + i}
+                    label={message.content}
+                  />
+                );
+              })}
+              </Box>
+            </Box>
+            <Box
+              sx={{
+                padding: '12px 0',
+                display: 'flex',
+                alignItems: 'center'
+              }}
+            >
+              <CircularProgress
+                size="24px"
+              />
+              <Typography
+                component={'span'}
+                sx={{
+                  paddingLeft: '12px',
+                  flexGrow: 1,
+                }}
+              >
+                Typing ...
+              </Typography>
+            </Box>
+          </Box>
           <Box>
             <FormGroup>
               <OutlinedInput

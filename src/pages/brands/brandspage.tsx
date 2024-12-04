@@ -60,7 +60,7 @@ const BrandsPage = () => {
     <Box>
       <PageTitle
         label={'Брандове'}
-        to={'/'}
+        to={'/home'}
       />
       <SearchBox />
       <BrandsList

@@ -3,7 +3,8 @@ import { FC } from "react";
 
 type PrimaryButtonProps = {
   label: string,
-  onClick: () => void,
+  type?: "button" | "submit" | "reset" | undefined,
+  onClick?: () => void,
   sx?: any, 
 };
 
@@ -22,11 +23,12 @@ const StyledButton = styled(Button)(({theme}) => `
 export const PrimaryButton:FC<PrimaryButtonProps> = ({
   onClick,
   label,
+  type = 'button',
   sx,
 }) => {
   return (
     <StyledButton
-      onClick={() => onClick()}
+      type={type}
       sx={{...sx}}
     >
       {label}

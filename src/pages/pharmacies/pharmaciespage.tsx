@@ -29,7 +29,7 @@ const PharmaciesPage = () => {
     <Box>
       <PageTitle
         label={'Аптеки'}
-        to={'/'}
+        to={'/home'}
       />
       <SearchBox filters selected={selected} />
       <PharmaciesList

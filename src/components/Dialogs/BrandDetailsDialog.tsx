@@ -51,6 +51,7 @@ export const BrandDetailsDialog:FC<BrandDetailsDialogProps> = ({
     fullScreen
     open={open}
     TransitionComponent={Transition}
+    closeAfterTransition={false}
     keepMounted
     sx={{
       height: '80%',

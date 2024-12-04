@@ -64,10 +64,8 @@ export const MainLayout = () => {
           onOpen={handleAiOpen}
           onClose={handleAiClose}
         />
-
         <MainNavigation />
       </Box>
-      <SearchBox />
       <Outlet />
     </Box>
   );

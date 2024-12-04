@@ -79,6 +79,7 @@ export const Filters:FC<FiltersProps> = ({
       <Dialog
         fullScreen
         open={open}
+        closeAfterTransition={false}
         TransitionComponent={Transition}
         onClose={handleClose}
         keepMounted
