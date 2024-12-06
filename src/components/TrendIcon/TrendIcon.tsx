@@ -1,21 +1,27 @@
 import { FC } from "react";
 import { Box } from "@mui/material";
 import { Close } from "@mui/icons-material";
+import { BrandDifference } from "../../types/brand/brands.types";
 
 type TrendIconProps = {
-  trend: boolean;
+  trend: BrandDifference;
 };
 
 export const TrendIcon:FC<TrendIconProps> = ({
   trend,
 }) => {
-  const trendIcon = !!trend ? <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  const trendIcon = trend === 'positive' ? <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
   <g id="Frame">
   <path id="Vector" d="M15 11.25L12 8.25M12 8.25L9 11.25M12 8.25L12 15.75M3 12C3 10.8181 3.23279 9.64778 3.68508 8.55585C4.13737 7.46392 4.80031 6.47177 5.63604 5.63604C6.47177 4.80031 7.46392 4.13738 8.55585 3.68508C9.64778 3.23279 10.8181 3 12 3C13.1819 3 14.3522 3.23279 15.4441 3.68508C16.5361 4.13738 17.5282 4.80031 18.364 5.63604C19.1997 6.47177 19.8626 7.46392 20.3149 8.55585C20.7672 9.64778 21 10.8181 21 12C21 14.3869 20.0518 16.6761 18.364 18.364C16.6761 20.0518 14.3869 21 12 21C9.61305 21 7.32387 20.0518 5.63604 18.364C3.94821 16.6761 3 14.3869 3 12Z" stroke="#2EA040" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
   </g>
   </svg>
-   : <Close />;
-  
+   : trend === 'negative' ? <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M7 10.75L10 13.75M10 13.75L13 10.75M10 13.75V6.25M19 10C19 11.1819 18.7672 12.3522 18.3149 13.4442C17.8626 14.5361 17.1997 15.5282 16.364 16.364C15.5282 17.1997 14.5361 17.8626 13.4442 18.3149C12.3522 18.7672 11.1819 19 10 19C8.8181 19 7.64778 18.7672 6.55585 18.3149C5.46392 17.8626 4.47177 17.1997 3.63604 16.364C2.80031 15.5282 2.13738 14.5361 1.68508 13.4442C1.23279 12.3522 1 11.1819 1 10C1 7.61305 1.94821 5.32387 3.63604 3.63604C5.32387 1.94821 7.61305 1 10 1C12.3869 1 14.6761 1.94821 16.364 3.63604C18.0518 5.32387 19 7.61305 19 10Z" stroke="#BF1414" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+   </svg>
+    : <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M10.75 13L13.75 10M13.75 10L10.75 7M13.75 10L6.25 10M10 1C11.1819 1 12.3522 1.23279 13.4442 1.68508C14.5361 2.13738 15.5282 2.80031 16.364 3.63604C17.1997 4.47177 17.8626 5.46392 18.3149 6.55585C18.7672 7.64778 19 8.8181 19 10C19 11.1819 18.7672 12.3522 18.3149 13.4442C17.8626 14.5361 17.1997 15.5282 16.364 16.364C15.5282 17.1997 14.5361 17.8626 13.4442 18.3149C12.3522 18.7672 11.1819 19 10 19C7.61305 19 5.32387 18.0518 3.63604 16.364C1.94821 14.6761 1 12.3869 1 10C1 7.61305 1.94821 5.32387 3.63604 3.63604C5.32387 1.94821 7.61305 1 10 1Z" stroke="#5F84A6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+   </svg>;
+
   return (
     <Box>
       {trendIcon}

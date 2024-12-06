@@ -9,8 +9,7 @@ import { MainNavigation } from "../components/Menu/MainNavigation";
 import logo from "./../stada_logo.png";
 import aibg from "./../aibg.jpeg";
 import { AiDialog } from "../components/Dialogs/AiDialog";
-import { SearchBox } from "../components/SearchBox/SearchBox";
-
+/* import { SearchBox } from "../components/SearchBox/SearchBox"; */
 
 const StadAiButton = styled(IconButton)(({theme}) => ({
   background: ` url(${aibg}) no-repeat 0 0`,

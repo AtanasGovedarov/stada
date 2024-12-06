@@ -1,17 +1,20 @@
 import { Avatar, Typography, useTheme } from "@mui/material";
 import { FC } from "react";
+import { BrandDifference } from "../../types/brand/brands.types";
 
 type MarketShareAvatarProps = {
-  percent: number
+  percent: number,
+  difference: BrandDifference,
 };
 
 export const MarketShareAvatar:FC<MarketShareAvatarProps> = ({
-  percent
+  percent,
+  difference,
 }) => {
   const theme = useTheme();
 
-  const avatarBgColor = percent < 11 ?
-    theme.colors.stada.stadaRedError : percent < 31 ?
+  const avatarBgColor = difference === 'negative' ?
+    theme.colors.stada.stadaRedError : difference === 'neutral' ?
       theme.colors.stada.stadaYellowWarning : theme.colors.stada.stadaGreenSuccess ;
   return (
     <Avatar

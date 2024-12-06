@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 
 import {
   Box,
@@ -12,12 +12,24 @@ import { Filters } from "../Filters/Filters";
 type SearchBoxProps = {
   filters?: boolean,
   selected?: string[],
+  placeholder?: string,
+  onInput: (v: string) => void,
 };
 
 export const SearchBox:FC<SearchBoxProps> = ({
   filters,
   selected,
+  placeholder,
+  onInput,
 }) => {
+  const [ searchStr, setSearchStr ] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!searchStr) return;
+
+    onInput(searchStr);
+  }, [searchStr])
+
   return (
     <Box
       sx={{
@@ -26,7 +38,8 @@ export const SearchBox:FC<SearchBoxProps> = ({
       }}
     >
       <OutlinedInput
-        placeholder={'Търси'}
+        placeholder={!!placeholder ? placeholder : 'Търси'}
+        value={searchStr}
         startAdornment={
           <InputAdornment position="start">
             <Search />

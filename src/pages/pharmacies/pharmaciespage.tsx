@@ -1,8 +1,11 @@
+import { useEffect, useState } from "react";
+
 import { Box } from "@mui/material";
 import { PageTitle } from "../../components/PageTitle/PageTitle";
 import { SearchBox } from "../../components/SearchBox/SearchBox";
-import { PharmacyData } from "../../types/pharmacy/pharmacy.types";
+import { PharmaciesListResponse, PharmacyData } from "../../types/pharmacy/pharmacy.types";
 import { PharmaciesList } from "../../components/Lists/PharmaciesList";
+import { getClients } from "../../api-calls/clients.api";
 
 const DATA:PharmacyData[] = [
   {
@@ -24,6 +27,18 @@ const DATA:PharmacyData[] = [
 
 const PharmaciesPage = () => {
   const selected = ['А-Г', 'Положителен'];
+  const [ loading, setLoading ] = useState(false);
+  const [ pageNumber, setPageNumber ] = useState<number>(1);
+  const [ clientsData, setClientsData ] = useState<PharmaciesListResponse[] | null>(null);
+
+  useEffect(() => {
+    (async () => {
+      setLoading(true);
+      const pharmaciesResponse = await getClients(pageNumber, 8);
+      setClientsData(pharmaciesResponse);
+      setLoading(false);
+    })();
+  }, []);
 
   return (
     <Box>
@@ -31,9 +46,13 @@ const PharmaciesPage = () => {
         label={'Аптеки'}
         to={'/home'}
       />
-      <SearchBox filters selected={selected} />
+      <SearchBox
+        filters
+        selected={selected}
+        onInput={(v: string) => {}}
+      />
       <PharmaciesList
-        data={DATA}
+        data={clientsData}
       />
     </Box>
   );

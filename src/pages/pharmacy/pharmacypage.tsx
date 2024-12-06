@@ -3,8 +3,10 @@ import { useParams } from "react-router-dom";
 import { Box, Typography } from "@mui/material";
 
 import { PageTitle } from "../../components/PageTitle/PageTitle";
-import { PharmacyProfile } from "../../types/pharmacy/pharmacy.types";
+import { PharmaciesListResponse, PharmacyProfile } from "../../types/pharmacy/pharmacy.types";
 import { ProductsList } from "../../components/Lists/ProductsList";
+import { useEffect, useState } from "react";
+import { getClients } from "../../api-calls/clients.api";
 
 const PHARMACIES:PharmacyProfile[] = [
   {
@@ -32,8 +34,19 @@ const PHARMACIES:PharmacyProfile[] = [
 
 const PharmacyPage = () => {
   const { pharmacyid } = useParams();
+  const [ loading, setLoading ] = useState(false);
+  const [ pharmacyData, setPharmacyData ] = useState<PharmaciesListResponse | null>(null);
 
-  const pharmacyData = PHARMACIES.find((pharmacy) => pharmacy.id === pharmacyid);
+  //const pharmacyData = PHARMACIES.find((pharmacy) => pharmacy.id === pharmacyid);
+
+  useEffect(() => {
+    (async () => {
+      setLoading(true);
+      const pharmaciesResponse = await getClients(1, 8);
+      setPharmacyData(pharmaciesResponse.filter((client) => client.name === pharmacyid)[0]);
+      setLoading(false);
+    })();
+  }, []);
 
   return (
     <Box>
@@ -52,7 +65,7 @@ const PharmacyPage = () => {
           {pharmacyData.address}
         </Typography>
         <ProductsList
-          data={pharmacyData.products}
+          clientDetails={pharmacyData}
         />
       </>
       }

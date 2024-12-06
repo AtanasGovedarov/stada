@@ -15,7 +15,7 @@ import {
   useTheme,
 } from "@mui/material";
 
-import { BrandData } from "../../types/brand/brands.types";
+import { BrandsListResponse } from "../../types/brand/brands.types";
 import { ExpandMore } from "@mui/icons-material";
 import { MarketShareAvatar } from "../MarketShareAvatar/MarketShareAvatar";
 import { TrendIcon } from "../TrendIcon/TrendIcon";
@@ -23,7 +23,7 @@ import { BrandDetailsDialog } from "../Dialogs/BrandDetailsDialog";
 import { PrimaryButton } from "../Buttons/PrimaryButton";
 
 type BrandsListProps = {
-  data: BrandData[];
+  data: BrandsListResponse[] | null;
 };
 
 export const BrandsList:FC<BrandsListProps> = ({
@@ -38,7 +38,7 @@ export const BrandsList:FC<BrandsListProps> = ({
         padding: '24px'
       }}
     >
-      {data.map((brand, i) => {
+      {!!data && data.map((brand, i) => {
         return (
           <Accordion
             key={brand.id + i}
@@ -70,7 +70,8 @@ export const BrandsList:FC<BrandsListProps> = ({
               }}
             >
               <MarketShareAvatar
-                percent={brand.marketSharePercent}
+                percent={brand.marketShare}
+                difference={brand.difference}
               />
               <Typography
                 variant={'body2'}
@@ -80,7 +81,7 @@ export const BrandsList:FC<BrandsListProps> = ({
                   paddingLeft: '16px'
                 }}
               >
-                {brand.name}
+                {brand.id}
               </Typography>
             </AccordionSummary>
             <AccordionDetails
@@ -133,7 +134,7 @@ export const BrandsList:FC<BrandsListProps> = ({
                               textTransform: 'none'
                             }}
                           >
-                            Q2
+                            Q{brand.sellIn.currentQuarter.name}
                           </Typography>
                         </TableCell>
                         <TableCell
@@ -176,16 +177,16 @@ export const BrandsList:FC<BrandsListProps> = ({
                           >PY</Typography>
                         </TableCell>
                         <TableCell>
-                          {brand.sellInVsPyPercent.q2}%
+                          {brand.sellIn.currentQuarter.percent}%
                         </TableCell>
                         <TableCell>
-                          {brand.sellInVsPyPercent.ytd}%
+                          {brand.sellIn.ytd}%
                         </TableCell>
                       </TableRow>
                     </TableBody>
                   </Table>
                 </TableContainer>
-                <TrendIcon trend={brand.trend} />
+                <TrendIcon trend={brand.difference} />
               </Box>
               <PrimaryButton
                 label={'Виж продажби'}
@@ -193,8 +194,7 @@ export const BrandsList:FC<BrandsListProps> = ({
               />
               <BrandDetailsDialog
                 open={brandDetailsDialog}
-                name={brand.name}
-                detailsData={brand.details}
+                id={brand.id}
                 onClose={() => setBrandDetailsDialog(false)}
               />
             </AccordionDetails>

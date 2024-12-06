@@ -1,8 +1,11 @@
+import { useEffect, useState } from "react";
+
 import { Box } from "@mui/material";
 import { PageTitle } from "../../components/PageTitle/PageTitle";
 import { SearchBox } from "../../components/SearchBox/SearchBox";
-import { BrandData } from "../../types/brand/brands.types";
+import { BrandData, BrandsListResponse } from "../../types/brand/brands.types";
 import { BrandsList } from "../../components/Lists/BrandsList";
+import { getBrands } from "../../api-calls/brands.api";
 
 const DATA:BrandData[] = [
   {
@@ -56,15 +59,38 @@ const DATA:BrandData[] = [
 ];
 
 const BrandsPage = () => {
+  const [ loading, setLoading ] = useState(false);
+  const [ pageNumber, setPageNumber ] = useState(1);
+  const [ brandsData, setBrandsData ] = useState<BrandsListResponse[] | null>(null);
+
+  useEffect(() => {
+    (async () => {
+      setLoading(true);
+      const brandsResponse = await getBrands(pageNumber, null);
+      setBrandsData(brandsResponse);
+      setLoading(false);
+    })();
+  }, []);
+
+  const toggleSearch = async (v: string ) => {
+    setLoading(true);
+    const brandsResponse = await getBrands(pageNumber, v);
+    setBrandsData(brandsResponse);
+    setLoading(false);
+  };
+
   return (
     <Box>
       <PageTitle
         label={'Брандове'}
         to={'/home'}
       />
-      <SearchBox />
+      <SearchBox
+        placeholder={'Търси бранд'}
+        onInput={(v: string) => toggleSearch(v)}
+      />
       <BrandsList
-        data={DATA}
+        data={brandsData}
       />
     </Box>
   );

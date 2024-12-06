@@ -7,11 +7,11 @@ import {
   styled,
   useTheme,
 } from "@mui/material";
-import { PharmacyData } from "../../types/pharmacy/pharmacy.types";
+import { PharmaciesListResponse } from "../../types/pharmacy/pharmacy.types";
 import { BudgetBar } from "../BudgetBar/BudgetBar";
 
 type ProductsListProps = {
-  data: PharmacyData[],
+  clientDetails: PharmaciesListResponse,
 };
 
 const StyledCard = styled(Card)(({theme})=> `
@@ -23,13 +23,13 @@ const StyledCard = styled(Card)(({theme})=> `
 `);
 
 export const ProductsList:FC<ProductsListProps> = ({
-  data,
+  clientDetails,
 }) => {
   const theme = useTheme();
 
-  const iconColor = (item: PharmacyData):string => {
+  /* const iconColor = (item: PharmacyData):string => {
     return item.type === 'Increase' ? theme.colors.stada.stadaGreenSuccess : theme.colors.stada.stadaRedError;
-  };
+  }; */
 
   return (
     <Box
@@ -37,10 +37,10 @@ export const ProductsList:FC<ProductsListProps> = ({
         padding: '24px'
       }}
     >
-      {data.map((pharmacy, i) => {
+      {!!clientDetails.productPotentials && clientDetails.productPotentials.map((pharmacy, i) => {
         return (
           <StyledCard
-            key={pharmacy.id + i}
+            key={pharmacy.name + i}
           >
             <Box
               sx={{
@@ -62,7 +62,7 @@ export const ProductsList:FC<ProductsListProps> = ({
                 {pharmacy.name}
               </Typography>
 
-              <svg
+              {/* <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"
@@ -77,7 +77,7 @@ export const ProductsList:FC<ProductsListProps> = ({
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
-              </svg>
+              </svg> */}
             </Box>
 
             <Typography
@@ -88,12 +88,12 @@ export const ProductsList:FC<ProductsListProps> = ({
                 marginBottom: '2px',
               }}
             >
-              {!!pharmacy.address && pharmacy.address}
+              {!!clientDetails.address && clientDetails.address}
             </Typography>
 
             <Box>
-              <BudgetBar value={pharmacy.change} type={pharmacy.type} />
-              <BudgetBar total value={pharmacy.total} />
+              <BudgetBar value={pharmacy.potential} type={'Increase'} />
+              <BudgetBar total value={pharmacy.turnover} />
             </Box>
           </StyledCard>
         );

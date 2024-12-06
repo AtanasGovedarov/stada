@@ -1,4 +1,4 @@
-import { FC, forwardRef } from "react";
+import { FC, forwardRef, useEffect, useState } from "react";
 
 import {
   Dialog,
@@ -16,14 +16,14 @@ import {
   Typography
 } from "@mui/material";
 
-import { BrandDetailsData } from "../../types/brand/brands.types";
+import { BrandDetailsData, BrandDetailsResponse } from "../../types/brand/brands.types";
 import { Close } from "@mui/icons-material";
 import { TransitionProps } from "@mui/material/transitions";
+import { getBrandDetails } from "../../api-calls/brands.api";
 
 type BrandDetailsDialogProps = {
   open: boolean,
-  detailsData: BrandDetailsData[],
-  name: string,
+  id: string,
   onClose: () => void,
 };
 
@@ -38,13 +38,24 @@ const Transition = forwardRef(function Transition(
 
 export const BrandDetailsDialog:FC<BrandDetailsDialogProps> = ({
   open,
-  detailsData,
-  name,
+  id,
   onClose,
 }) => {
+  const [ loading, setLoading ] = useState(false);
+  const [ brandDetails, setBrandDetails ] = useState<BrandDetailsResponse[] | null>(null);
+
   const handleClose = () => {
     onClose();
   };
+
+  useEffect(() => {
+    (async () => {
+      setLoading(true);
+      const brandResponse = await getBrandDetails(id);
+      setBrandDetails(brandResponse);
+      setLoading(false);
+    })();
+  }, []);
   
   return (
   <Dialog
@@ -75,7 +86,7 @@ export const BrandDetailsDialog:FC<BrandDetailsDialogProps> = ({
           padding: '24px 0'
         }}
       >
-        {name}
+        {id}
       </Typography>
     </DialogTitle>
     <IconButton
@@ -91,12 +102,12 @@ export const BrandDetailsDialog:FC<BrandDetailsDialogProps> = ({
       <Close />
     </IconButton>
     <DialogContent>
-      {detailsData.map((item, ind) => {
+      {!!brandDetails && brandDetails.map((item, ind) => {
         return (
           <Grid2
             container
             columns={1}
-            key={item.venue + ind}
+            key={item.brickName + ind}
             sx={{
               borderBottom: `1px solid #E6E6E6`,
               marginBottom: '24px'
@@ -110,7 +121,7 @@ export const BrandDetailsDialog:FC<BrandDetailsDialogProps> = ({
                   paddingBottom: '12px'
                 }}
               >
-                {item.venue}
+                {item.brickName}
               </Typography>
               <TableContainer>
                 <Table

@@ -236,7 +236,7 @@ export const Filters:FC<FiltersProps> = ({
             </Grid2>
           </Grid2>
 
-          <Typography
+          {/* <Typography
             variant={'body2'}
             sx={{
               marginTop: '32px'
@@ -278,7 +278,7 @@ export const Filters:FC<FiltersProps> = ({
                 marginBottom: '24px',
               }}
             />
-          </Box>
+          </Box> */}
           <PrimaryButton
             label={'Приложи филтрите'}
             onClick={() => {console.log('Приложи филтрите')}}

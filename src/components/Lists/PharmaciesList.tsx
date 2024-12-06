@@ -7,12 +7,12 @@ import {
   styled,
   useTheme,
 } from "@mui/material";
-import { PharmacyData } from "../../types/pharmacy/pharmacy.types";
+import { PharmaciesListResponse, PharmacyData } from "../../types/pharmacy/pharmacy.types";
 import { Link } from "react-router-dom";
 import { BudgetBar } from "../BudgetBar/BudgetBar";
 
 type PharmaciesListProps = {
-  data: PharmacyData[],
+  data: PharmaciesListResponse[] | null,
 };
 
 const StyledCard = styled(Card)(({theme})=> `
@@ -37,11 +37,11 @@ export const PharmaciesList:FC<PharmaciesListProps> = ({
         padding: '24px'
       }}
     >
-      {data.map((pharmacy, i) => {
+      {!!data && data.map((pharmacy, i) => {
         return (
           <Link
-            key={pharmacy.id + i}
-            to={`/pharmacy/${pharmacy.id}`}
+            key={pharmacy.name + i}
+            to={`/pharmacy/${pharmacy.name}`}
             style={{
               textDecoration: 'none',
               marginBottom: '8px',
@@ -69,7 +69,7 @@ export const PharmaciesList:FC<PharmaciesListProps> = ({
                 {pharmacy.name}
               </Typography>
 
-              <svg
+              {/* <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"
@@ -84,7 +84,7 @@ export const PharmaciesList:FC<PharmaciesListProps> = ({
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
-              </svg>
+              </svg> */}
             </Box>
 
             <Typography
@@ -99,8 +99,8 @@ export const PharmaciesList:FC<PharmaciesListProps> = ({
             </Typography>
 
             <Box>
-              <BudgetBar value={pharmacy.change} type={pharmacy.type} />
-              <BudgetBar total value={pharmacy.total} />
+              <BudgetBar value={pharmacy.totalPotential} type={'Increase'} />
+              <BudgetBar total value={pharmacy.totalTurnover} />
             </Box>
           </StyledCard>
           </Link>
